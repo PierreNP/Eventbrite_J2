@@ -1,10 +1,17 @@
-<h1>Coucou <%= @user.first_name%></h1>
+    <h1>Coucou <%= @user.first_name%></h1>
 
-<%= @user.first_name%><br />
+    <%= @user.first_name%><br />
+    <%= @user.last_name%><br />
+    <%= @user.email%><br />
+    <%= @user.description%>
 
-<%= @user.last_name%><br />
+<h2>Mes événements en tant qu'admin</h2>
 
-<%= @user.email%><br />
-
-<%= @user.description%>
-
+    <% @user_events.each do |event| %>
+      <%= event.title%><br />
+      <%= event.description%><br />
+      <%= event.start_date%><br />
+      <%= event.location%><br />
+      <%= event.duration%><br />
+      <%= event.price%><br />
+    <% end %>

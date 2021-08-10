@@ -1,6 +1,6 @@
 <h1>New Event</h1>
 
-<%= form_with model:@event, url: events_path, method: :post do |f| %>
+<%= form_with model:@event, url: events_path, method: :post, local:true do |f| %>
  
 
   <div class="field">
@@ -17,6 +17,16 @@
     <%= f.label :location %>
     <%= f.text_field :location %>
   </div>
+
+  <div class="field">
+    <%= f.label :duration %>
+    <%= f.text_field :duration %>
+  </div><br />
+
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.datetime_field :start_date %>
+  </div><br />
 
   <div class="field">
     <%= f.label :price %>
