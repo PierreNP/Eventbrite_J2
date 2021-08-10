@@ -11,8 +11,8 @@ class User < ApplicationRecord
   has_many :shows, foreign_key: 'admin_id', class_name:'Event'
        
        
-  def welcome_send
-    UserMailer.welcome_email(self).deliver_now
-  end
+  # def welcome_send
+  #   UserMailer.welcome_email(self).deliver_now
+  # end
        
 end
