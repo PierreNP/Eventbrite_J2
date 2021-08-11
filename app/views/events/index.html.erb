@@ -24,8 +24,9 @@
         <p><%= event.description %></p>
         
 
-        <% if current_user && current_user.id == event.admin_id %>
             <div><%= link_to 'En savoir plus', event %>
+              <% if current_user && current_user.id == event.admin_id %>
+
               <%= link_to 'Editer', edit_event_path(event) %>
               <%= link_to 'Détruire', event, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
