@@ -4,7 +4,7 @@
   <p class="lead">Dis bye bye à Eventbrite!</p>
 <!--   <hr class="my-4">   -->  
   <p class="lead">
-    <%= link_to "Créer un event", new_event_path, class:"btn btn-primary btn-lg" %>
+  <% if !current_user%>  <%= link_to "Connexion", new_event_path, class:"btn btn-primary btn-lg" %> <% else %> <%= link_to "Créer un event", new_event_path, class:"btn btn-primary btn-lg" %>  <% end %> 
   </p>
 </div>
 <p id="notice"><%= notice %></p>
@@ -22,6 +22,7 @@
         <div class="card-body">
         <h3><%= event.title %></h3>
         <p><%= event.description %></p>
+        
 
         <% if current_user && current_user.id == event.admin_id %>
             <div><%= link_to 'En savoir plus', event %>
