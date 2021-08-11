@@ -28,7 +28,10 @@ body{
 
 .jumbotron{
   background-image: url("https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
-  height: 95vh;
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   padding: 10rem;
   color: white;
 }
@@ -70,6 +73,11 @@ body{
   color: inherit;
 }
 
+.navbar a:hover{
+    background: transparent;
+
+}
+
 .navbar li{
   margin: 0 1rem;
 }
@@ -84,10 +92,10 @@ body{
 }
 
 a:hover{
-  background: transparent;
+  color: yellow;
 }
 
-a:visited{
+.jumbotron a:visited{
   color: inherit;
 }
 
@@ -101,9 +109,10 @@ a:visited{
 
 .event-grid{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
   padding: 3rem;
   gap: 2rem;
+  margin: 0 15rem;
 }
 
 .event-card{
@@ -114,6 +123,7 @@ a:visited{
   border-radius: 0.25rem;
   box-shadow: 2px 0px 7px rgba(0,0,0,0.1);
   transition: 0.5s all;
+  padding: 1rem;
 }
 
 .event-card:hover{

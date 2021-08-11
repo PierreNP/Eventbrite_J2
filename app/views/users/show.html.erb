@@ -1,13 +1,14 @@
     <h1>Coucou <%= @user.first_name%></h1>
 
-    <%= @user.first_name%><br />
-    <%= @user.last_name%><br />
-    <%= @user.email%><br />
+    <%= @user.first_name%>
+    <%= @user.last_name%>
+    <%= @user.email%>
     <%= @user.description%>
 
-<h2>Mes événements en tant qu'admin</h2>
-
+<h4>Mes événements en tant qu'admin</h4>
+<div class = "event-grid">
     <% @user_events.each do |event| %>
+    <div class = "event-card">
       <%= event.title%><br />
       <%= event.description%><br />
       <%= event.start_date%><br />
@@ -15,3 +16,6 @@
       <%= event.duration%><br />
       <%= event.price%><br />
     <% end %>
+</div>
+</div>
+
