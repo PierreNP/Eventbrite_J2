@@ -12,8 +12,17 @@
 
 <%= @event.price%><br />
 
+<% if !@event.attendees.include?(current_user) %>  
+<%= link_to "Participer", event_attendances_path(@event.id), method: :post%>
+<% else %>
+<p>Impatient de t'y voir, gros !</p>
+<%end%>
+
+
+<% if current_user.id == @event.admin_id %>  
+<%= link_to 'Edit', edit_event_path(@event) %> 
+<%end%>
 
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

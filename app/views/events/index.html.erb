@@ -1,40 +1,29 @@
-
-<div class="jumbotron">
-  <h1 class="display-4">The Eventbrite Killer</h1>
-  <p class="lead">Dis bye bye à Eventbrite!</p>
-<!--   <hr class="my-4">   -->  
-  <p class="lead">
-  <% if !current_user%>  <%= link_to "Connexion", new_user_session_path, class:"btn btn-primary btn-lg" %> <% else %> <%= link_to "Créer un event", new_event_path, class:"btn btn-primary btn-lg" %>  <% end %> 
-  </p>
-</div>
-<p id="notice"><%= notice %></p>
-
-
-
-<h1>Tous les Events</h1>
-
-  <div class='event-grid'>
-    <% @events.each do |event| %>
-      <div class="event-card">
-<!--         <div class="img-card">
+    <div class="jumbotron">
+      <h1 class="display-4">The Eventbrite Killer</h1>
+      <p class="lead">Dis bye bye à Eventbrite!</p>
+      <!--   <hr class="my-4">   -->
+      <p class="lead">
+        <% if !current_user%>  <%= link_to "Connexion", new_user_session_path, class:"btn btn-primary btn-lg" %> <% else %> <%= link_to "Créer un event", new_event_path, class:"btn btn-primary btn-lg" %>  <% end %>
+      </p>
+    </div>
+    <p id="notice"><%= notice %></p>
+    <h1>Tous les Events</h1>
+    <div class='event-grid'>
+      <% @events.each do |event| %>
+        <div class="event-card">
+          <!--         <div class="img-card">
           <img src="">
         </div> -->
-        <div class="card-body">
-        <h3><%= event.title %></h3>
-        <p><%= event.description %></p>
-        
-
+          <div class="card-body">
+            <h3><%= event.title %></h3>
+            <p><%= event.description %></p>
             <div><%= link_to 'En savoir plus', event %>
               <% if current_user && current_user.id == event.admin_id %>
-
-              <%= link_to 'Editer', edit_event_path(event) %>
-              <%= link_to 'Détruire', event, method: :delete, data: { confirm: 'Are you sure?' } %>
-                      <%  end %>
-
+                <%= link_to 'Editer', edit_event_path(event) %>
+                <%= link_to 'Détruire', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%  end %>
             </div>
-    
-        
+          </div>
         </div>
-        </div>
-    <% end %>
-</div>
+      <% end %>
+    </div>
