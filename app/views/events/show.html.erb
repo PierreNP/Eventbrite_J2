@@ -13,7 +13,7 @@
 <%= @event.price%><br />
 
 <% if !@event.attendees.include?(current_user) %>  
-<%= link_to "Participer", event_attendances_path(@event.id), method: :post%>
+<%= link_to "Participer", new_event_attendance_path(@event.id)%>
 <% else %>
 <p>Impatient de t'y voir, gros !</p>
 <%end%>

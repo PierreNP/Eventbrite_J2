@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     if params[:user_id] && params[:user_id].to_i == current_user.id
-      @events= current_user.events
+      @events = current_user.events
     elsif params[:user_id] && params[:user_id].to_i != current_user.id 
       redirect_to root_path
     else

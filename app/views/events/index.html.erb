@@ -17,7 +17,7 @@
           <div class="card-body">
             <h3><%= event.title %></h3>
             <p><%= event.description %></p>
-            <div><%= link_to 'En savoir plus', event %>
+            <div><%= link_to 'En savoir plus', event_path(event.id) %>
               <% if current_user && current_user.id == event.admin_id %>
                 <%= link_to 'Editer', edit_event_path(event) %>
                 <%= link_to 'Détruire', event, method: :delete, data: { confirm: 'Are you sure?' } %>
