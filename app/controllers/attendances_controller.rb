@@ -15,7 +15,20 @@ class AttendancesController < ApplicationController
       @event = Event.find(params[:event_id])
       @amount = @event.price * 100
       @attendance = Attendance.new
+      puts "👀"*20
+      puts @amount
+      puts @amount.class
+      puts "👀"*20
 
+    if (@amount > 0)
+
+      puts "👄"*40
+      puts 'je suis dans le IF'
+      puts "👄"*40
+
+      begin
+        puts 'je rentre dans le IF AMOUNT > 0'
+        puts "😈"*100
       customer = Stripe::Customer.create({
         email: params[:stripeEmail],
         source: params[:stripeToken],
@@ -27,11 +40,20 @@ class AttendancesController < ApplicationController
         description: 'Rails Stripe customer',
         currency: 'eur',
       })
-      @attendance.update(event_id:@event.id, attendee_id:current_user.id, stripe_customer_id:customer)
+      @attendance.update(event_id:@event.id, attendee_id:current_user.id, stripe_customer_id:customer.id)
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_event_attendance_path
+    end
+
+  else
+      puts "💩"*40
+      puts 'je suis dans le ELSE'
+      @attendance.update(event_id:@event.id, attendee_id:current_user.id, stripe_customer_id:"free event so no Stripe ID")
+      puts "💩"*40
+
+  end
     
   end
 

@@ -6,14 +6,23 @@
         </div>
         <% end %>
 
+    <% if (@event.price > 0) %>
+
       <label class="amount">
         <span>Prix TTC: <%= @event.price %>.00 €</span>
       </label>
     </article>
 
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button btn-red"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
             data-description="Votre billet pour l'Event"
             data-amount="<%= @event.price * 100 %>"
             data-locale="auto"></script>
+
+    <% else%>
+    <%= link_to "Participer gratuitement",event_attendances_path(@event.id), method: :post %>
+
+    <% end %>
+
 <% end %>
+
