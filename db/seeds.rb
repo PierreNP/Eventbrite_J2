@@ -18,13 +18,13 @@ city_list = [["Paris","75000"],["Lyon","69000"],["Marseille","13000"],["Nice","0
 # end
 
 
-50.times do
+100.times do
   User.create(first_name:Faker::Name.first_name,last_name:Faker::Name.last_name, password:Faker::Internet.password(min_length: 8), description:Faker::Lorem.sentences(number: 2).join(" "), email:Faker::Internet.email )
 end
 
 # tag_list.map {|tag| Tag.create(title: tag)}
 
-10.times do
+50.times do
   event = Event.create(title:Faker::Lorem.words(number: 2).join(" "), description:Faker::Lorem.sentences(number: 2).join(" "), admin_id:rand(1..User.count),location:city_list[rand(0..(city_list.length-1))][0], price:rand(0..100),duration:rand(1..7), start_date:Faker::Date.between(from: '2021-01-01', to: '2021-12-31'))
 
   rand(5..15).times do

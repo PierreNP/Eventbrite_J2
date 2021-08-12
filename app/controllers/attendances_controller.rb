@@ -1,5 +1,7 @@
 class AttendancesController < ApplicationController
 
+  before_action :is_attending?, only: [:new, :create]
+
   # GET /attendances or /attendances.json
   def index
     @attendances = Attendance.all
@@ -15,17 +17,8 @@ class AttendancesController < ApplicationController
       @event = Event.find(params[:event_id])
       @amount = @event.price * 100
       @attendance = Attendance.new
-      puts "👀"*20
-      puts @amount
-      puts @amount.class
-      puts "👀"*20
 
     if (@amount > 0)
-
-      puts "👄"*40
-      puts 'je suis dans le IF'
-      puts "👄"*40
-
       begin
         puts 'je rentre dans le IF AMOUNT > 0'
         puts "😈"*100
@@ -47,13 +40,9 @@ class AttendancesController < ApplicationController
       redirect_to new_event_attendance_path
     end
 
-  else
-      puts "💩"*40
-      puts 'je suis dans le ELSE'
-      @attendance.update(event_id:@event.id, attendee_id:current_user.id, stripe_customer_id:"free event so no Stripe ID")
-      puts "💩"*40
-
-  end
+    else
+        @attendance.update(event_id:@event.id, attendee_id:current_user.id, stripe_customer_id:"free event so no Stripe ID")
+    end
     
   end
 
@@ -76,11 +65,5 @@ class AttendancesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-  
 
-    # Only allow a list of trusted parameters through.
-    # def attendance_params
-    #   params.fetch(:attendance, {})
-    # end
 end
