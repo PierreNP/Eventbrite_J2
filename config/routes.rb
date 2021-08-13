@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, :events, :attendances
+    root 'users#show'
   end 
 
   get 'test', to: 'static_pages#test'
