@@ -20,6 +20,11 @@
               <%= link_to "EventbriteKiller", root_path, class:'logo' %>
               <ul class="navbar-nav">
                 <% if current_user%>
+                <% if current_user.is_admin?%>
+                  <li>
+                    <%= link_to "Admin", admin_user_path(current_user.id) %>
+                  </li>
+                  <% end %>
                   <li>
                     <%= link_to "Mon profil", user_path(current_user.id) %>
                   </li>

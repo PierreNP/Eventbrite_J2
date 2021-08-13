@@ -1,2 +1,30 @@
-<h1>Admin::Events#index</h1>
-<p>Find me in app/views/admin/events/index.html.erb</p>
+
+<table class= "table table-bordered">
+  <% @all_events.sort.each do |event| %>
+    <tr>
+      <td><%= event.id %></td>
+      <td><%= event.title %></td>
+      <td><%= event.start_date %></td>
+      <td><%= event.location %></td>
+      <%if event.is_validated == nil %>
+        <td> En attente </td>
+        <td> <%= form_with  model:@event, url:admin_event_path(event.id), method: :patch, local: :true do |f| %> 
+              <%= f.hidden_field :is_validated, value:true %>
+              <%= f.submit "Valider" %>
+              <%end%></td>
+      <%elsif event.is_validated %>
+        <td> Validé </td>
+        <td> <%= form_with  model:@event, url:admin_event_path(event.id), method: :patch, local: :true do |f| %> 
+              <%= f.hidden_field :is_validated, value:false%>
+              <%= f.submit "Refuser" %>
+              <%end%></td>
+      <% else %>
+          <td> Refusé </td>
+          <td> <%= form_with  model:@event, url:admin_event_path(event.id), method: :patch, local: :true do |f| %> 
+                <%= f.hidden_field :is_validated, value:true%>
+                <%= f.submit "Valider" %>
+                <%end%></td>
+      <%end%>
+    </tr>
+  <%end%>
+</table>

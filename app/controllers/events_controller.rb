@@ -3,25 +3,25 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    if current_user.is_admin? && params[:user_id]
-      @events = User.find(params[:user_id]).events
-    elsif params[:user_id] && params[:user_id].to_i == current_user.id
-      @events = current_user.events
-    elsif params[:user_id] && params[:user_id].to_i != current_user.id 
+    if current_user && current_user.is_admin? && params_user_id
+      @events = User.find(params_user_id).events.where(is_validated:true)
+    elsif params_user_id && params_user_id.to_i == current_user.id
+      @events = current_user.events.where(is_validated:true)
+    elsif params_user_id && params_user_id.to_i != current_user.id 
       redirect_to root_path
     else
-      @events= Event.all  
+      @events= Event.where(is_validated:true)
     end
   end
 
   # GET /events/1 or /events/1.json
   def show
-    if params[:user_id] && params[:user_id].to_i == current_user.id
+    if params_user_id && params_user_id.to_i == current_user.id
       @event= Event.find(params[:id])
-    elsif params[:user_id] && params[:user_id].to_i != current_user.id 
+    elsif params_user_id && params_user_id.to_i != current_user.id 
       redirect_to root_path
     else
-      @event = Event.find(params[:id])
+      @event = Event.find(params_user_id)
     end
   end
 

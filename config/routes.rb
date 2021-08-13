@@ -17,6 +17,11 @@ Rails.application.routes.draw do
     root 'users#show'
   end 
 
+
+  # resources :events do 
+  #   resources :event_submissions
+  # end
+
   get 'test', to: 'static_pages#test'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

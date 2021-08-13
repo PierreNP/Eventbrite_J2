@@ -30,13 +30,10 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(post_params)
-    if @user.save
-      redirect_to admin_users_path
-    else
-      render :edit
-      #flash
-    end
+    @user.update(post_params_user)
+    redirect_to admin_users_path
+  
+    
   end
 
   def destroy
@@ -47,7 +44,7 @@ class Admin::UsersController < ApplicationController
 
   private
 
-  def post_params
+  def post_params_user
     params.require(:user).permit(:first_name, :last_name, :email, :password, :is_admin)
   end
 

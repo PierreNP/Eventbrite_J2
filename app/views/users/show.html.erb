@@ -5,17 +5,21 @@
     <%= @user.email%>
     <%= @user.description%>
 
-<h4>Mes événements en tant qu'admin</h4>
+<h4>Mes événements en tant qu'organisateur</h4>
 <div class = "event-grid">
     <% @user_events.each do |event| %>
     <div class = "event-card">
-      <%= event.title%><br />
-      <%= event.description%><br />
-      <%= event.start_date%><br />
-      <%= event.location%><br />
-      <%= event.duration%><br />
-      <%= event.price%><br />
+      <p><%= event.title%></p>
+      <p><%= event.description%></p>
+      <p><%= event.start_date%></p>
+      <p><%= event.location%></p>
+      <p><%= event.duration%></p>
+      <p><%= event.price%></p>
+      <%if !event.is_validated%>
+        <small>En attente de validation</small>
+      <%end%>
+      </div>
+
     <% end %>
-</div>
 </div>
 

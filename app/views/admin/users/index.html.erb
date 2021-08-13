@@ -8,7 +8,7 @@
       <th scope="col">Année de formation</th>
     </tr> %>
   </thead>
-<% @all_users.each do |user|%>
+<% @all_users.sort.each do |user|%>
 <tr>
   <td><%= user.id %></td>
   <td><%= user.first_name %></td>
