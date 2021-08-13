@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   end
   resources :orders
 
+  namespace :admin do
+    resources :users, :events, :attendances
+  end 
+
   get 'test', to: 'static_pages#test'
-  resources :staticpages
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
