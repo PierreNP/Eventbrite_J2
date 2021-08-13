@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   def is_attending?
     if current_user.events.include?(Event.find(params[:event_id]))
       redirect_to root_path
@@ -13,5 +14,12 @@ class ApplicationController < ActionController::Base
     # foutre un flash
   end
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :password, :encrypted_password, :is_admin])
+    end
 
 end

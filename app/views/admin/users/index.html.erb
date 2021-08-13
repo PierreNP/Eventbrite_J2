@@ -1,10 +1,25 @@
-<h1>Admin::Users#index</h1>
+<h1>Liste des Users</h1>
 <p>Find me in app/views/admin/users/index.html.erb</p>
 
 <table>
-<% User.all.each do |user|%>
+  <thead>
+    <%# <tr>
+      <th scope="col">Groupe</th>
+      <th scope="col">Année de formation</th>
+    </tr> %>
+  </thead>
+<% @all_users.each do |user|%>
 <tr>
-<td><%= user.first_name %></td>
-<td><%= user.last_name %></td>
+  <td><%= user.id %></td>
+  <td><%= user.first_name %></td>
+  <td><%= user.last_name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.is_admin %></td>
+  <td><%= link_to "Voir les events (participant)" %>/</td>
+  <td><%= link_to "Voir les events (admin)" %>/</td>
+  <td><%= link_to "Editer", edit_admin_user_path(user.id) %>/</td>
+  <td><%= link_to "Supprimer",admin_user_path(user.id), method: :delete %> </td>
 </tr>
 <%end%>
+
+<%= link_to "Créer un User", new_admin_user_path %>
