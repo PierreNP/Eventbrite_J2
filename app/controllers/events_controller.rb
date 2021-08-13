@@ -3,7 +3,9 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    if params[:user_id] && params[:user_id].to_i == current_user.id
+    if current_user.is_admin? && params[:user_id]
+      @events = User.find(params[:user_id]).events
+    elsif params[:user_id] && params[:user_id].to_i == current_user.id
       @events = current_user.events
     elsif params[:user_id] && params[:user_id].to_i != current_user.id 
       redirect_to root_path
