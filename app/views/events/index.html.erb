@@ -10,20 +10,25 @@
     <h1>Tous les Events</h1>
     <div class='event-grid'>
       <% @events.each do |event| %>
-        <div class="event-card">
-          <!--         <div class="img-card">
-          <img src="">
-        </div> -->
-          <div class="card-body">
-            <h3><%= event.title %></h3>
-            <p><%= event.description %></p>
-            <div><%= link_to 'En savoir plus', event_path(event.id) %>
-              <% if current_user && current_user.id == event.admin_id %>
-                <%= link_to 'Editer', edit_event_path(event) %>
-                <%= link_to 'Détruire', event, method: :delete, data: { confirm: 'Are you sure?' } %>
-              <%  end %>
-            </div>
+          <div class="card h-100 shadow border-0">
+                <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
+                <div class="card-body p-4", style="border:1px red solid;">
+                    <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
+                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3"><%= event.title %></h5></a>
+                    <p class="card-text mb-0"><%= event.description %></p>
+                </div>
+                <div class="card-footer bg-transparent", style="border:1px blue solid;">
+                    <div class="d-flex align-items-end justify-content-between">
+                        <div class="d-flex justify-content-between p-0 m-0", style="border:1px green solid;width:100%">
+                          <div>abc</div>
+                          <div>def</div>
+                          <div>def</div>
+                        </div>
+                    </div>
+                </div>
           </div>
-        </div>
       <% end %>
     </div>
+
+
+
