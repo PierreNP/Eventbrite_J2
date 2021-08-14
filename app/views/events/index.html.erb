@@ -5,28 +5,20 @@
       <p class="lead">
         <% if !current_user%>  <%= link_to "Connexion", new_user_session_path, class:"btn btn-primary btn-lg" %> <% else %> <%= link_to "Créer un event", new_event_path, class:"btn btn-primary btn-lg" %>  <% end %>
       </p>
+
     </div>
     <p id="notice"><%= notice %></p>
     <h1>Tous les Events</h1>
     <div class='event-grid'>
       <% @events.each do |event| %>
-          <div class="card h-100 shadow border-0">
-                <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
-                <div class="card-body p-4", style="border:1px red solid;">
-                    <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
-                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3"><%= event.title %></h5></a>
-                    <p class="card-text mb-0"><%= event.description %></p>
-                </div>
-                <div class="card-footer bg-transparent", style="border:1px blue solid;">
-                    <div class="d-flex align-items-end justify-content-between">
-                        <div class="d-flex justify-content-between p-0 m-0", style="border:1px green solid;width:100%">
-                          <div>abc</div>
-                          <div>def</div>
-                          <div>def</div>
-                        </div>
-                    </div>
-                </div>
+        <div class="card event-card">
+          <img class="card-img-top" src="https://source.unsplash.com/1600x900/?event,concert" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= event.title %></h5>
+            <p class="card-text"><%= event.description %></p>
+            <%= link_to "Details", event_path(event.id), class:'btn btn-primary' %>
           </div>
+        </div>
       <% end %>
     </div>
 

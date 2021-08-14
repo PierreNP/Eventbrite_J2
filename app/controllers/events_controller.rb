@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index]
 
   # GET /events or /events.json
   def index
@@ -16,13 +16,7 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
-    if params_user_id && params_user_id.to_i == current_user.id
-      @event= Event.find(params[:id])
-    elsif params_user_id && params_user_id.to_i != current_user.id 
-      redirect_to root_path
-    else
-      @event = Event.find(params_user_id)
-    end
+      @event = Event.find(params[:id])
   end
 
   # GET /events/new

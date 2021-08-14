@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
 
+  def welcome_email(user)
+    @user = user
+    mail(to: @user.email, subject: "Welcome to Eventbrite")
+  end
+
   def is_attending?
     if current_user.events.include?(Event.find(params[:event_id]))
       redirect_to root_path
@@ -17,6 +22,8 @@ class ApplicationController < ActionController::Base
   def params_user_id
     params[:user_id]
   end
+
+
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 

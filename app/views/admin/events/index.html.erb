@@ -4,25 +4,31 @@
     <tr>
       <td><%= event.id %></td>
       <td><%= event.title %></td>
-      <td><%= event.start_date %></td>
+      <td><%= event.start_date.to_s[0..9] %></td>
       <td><%= event.location %></td>
       <%if event.is_validated == nil %>
         <td> En attente </td>
         <td> <%= form_with  model:@event, url:admin_event_path(event.id), method: :patch, local: :true do |f| %> 
               <%= f.hidden_field :is_validated, value:true %>
-              <%= f.submit "Valider" %>
+              <%= f.submit "Valider", class:"btn btn-success" %>
               <%end%></td>
+        <td> <%= form_with  model:@event, url:admin_event_path(event.id), method: :patch, local: :true do |f| %> 
+              <%= f.hidden_field :is_validated, value:false %>
+              <%= f.submit "Refuser", class:"btn btn-danger" %>
+              <%end%>
+        </td>
       <%elsif event.is_validated %>
         <td> Validé </td>
+        <td></td>
         <td> <%= form_with  model:@event, url:admin_event_path(event.id), method: :patch, local: :true do |f| %> 
               <%= f.hidden_field :is_validated, value:false%>
-              <%= f.submit "Refuser" %>
+              <%= f.submit "Refuser", class:"btn btn-danger"  %>
               <%end%></td>
       <% else %>
           <td> Refusé </td>
           <td> <%= form_with  model:@event, url:admin_event_path(event.id), method: :patch, local: :true do |f| %> 
                 <%= f.hidden_field :is_validated, value:true%>
-                <%= f.submit "Valider" %>
+                <%= f.submit "Valider", class:"btn btn-success"  %>
                 <%end%></td>
       <%end%>
     </tr>

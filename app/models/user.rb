@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  :recoverable, :rememberable, :validatable, :confirmable
 
   # after_create :welcome_send
 
@@ -10,6 +11,16 @@ class User < ApplicationRecord
   has_many :events, through: :attendances
   has_many :shows, foreign_key: 'admin_id', class_name:'Event'
        
+  # def confirm!
+  #   welcome_email
+  #   super
+  # end
+
+  private
+
+  # def welcome_email
+  #   MemberMailer.welcome_email(self).deliver
+  # end
        
   # def welcome_send
   #   UserMailer.welcome_email(self).deliver_now

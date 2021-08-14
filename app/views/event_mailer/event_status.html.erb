@@ -1,0 +1,6 @@
+<p>Hello <%= @event_admin.first_name%>, votre event <%= @event.title%> a ete : </p>
+<% if @event.is_validated%>
+  <p>valide</p>
+  <%else %>
+  <p>refuse</p>
+<%end %>
