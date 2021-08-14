@@ -17,7 +17,7 @@ class Admin::UsersController < ApplicationController
 
   def create
     puts params
-    @user = User.create(post_params)
+    @user = User.create(post_params_user)
     if @user.save
       redirect_to admin_users_path
     end
