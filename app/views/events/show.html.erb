@@ -23,7 +23,7 @@
     <li>Durée : <%= @event.duration%> heure</li>
     <li>Ville : <%= @event.location%></li>
     <li>Prix : <%= @event.price%> €</li>
-    <li>Nombre d'inscrits : <%= @event.attendees.count%></li>
+    <li>Nombre d'inscrits : <%= @ event.attendees.count%></li>
     <li>Organisateur : <%= User.find(@event.admin_id).first_name%> <%= User.find(@event.admin_id).last_name%></li>
     <br>
     <% if current_user && current_user.id == @event.admin_id %>
@@ -33,7 +33,7 @@
       </div>
     <%end%>
   </ul>
-
+  
 </div>
 
 <%if @event.event_pictures.attached?%>
