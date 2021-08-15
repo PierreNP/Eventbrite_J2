@@ -21,21 +21,27 @@
   <div class="field">
     <%= f.label :duration %>
     <%= f.text_field :duration %>
-  </div><br />
+  </div>
 
   <div class="field">
     <%= f.label :start_date %>
     <%= f.datetime_field :start_date %>
-  </div><br />
+  </div>
 
   <div class="field">
     <%= f.label :price %>
     <%= f.text_field :price %>
-  </div><br />
+  </div>
+
+  <%if current_user.is_admin==true%>
+    <%= f.hidden_field :is_validated, value:true %>
+<% end %>
 
   <div class="actions">
     <%= f.submit "Créer l'événement" %>
-  </div><br />
+  </div>
+
+
 <% end %>
 
 <%= link_to 'Back', events_path %>
