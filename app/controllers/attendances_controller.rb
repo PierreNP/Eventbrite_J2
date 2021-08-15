@@ -51,15 +51,24 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/1/edit
   def edit
+
   end
 
   # PATCH/PUT /attendances/1 or /attendances/1.json
   def update
-
   end
 
   # DELETE /attendances/1 or /attendances/1.json
   def destroy
+    puts "👀"*60
+    puts params
+    puts "👀"*60
+
+    @attendance = Attendance.find(params[:id])
+    @event = Event.find(@attendance.event_id)
+    @attendance.destroy
+
+    redirect_to event_path(@event.id)
 
   end
 

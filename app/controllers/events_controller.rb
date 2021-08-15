@@ -16,6 +16,7 @@ class EventsController < ApplicationController
 
   def show
       @event = Event.find(params[:id])
+      @attendance = Attendance.find_by(event_id:@event.id, attendee_id:current_user.id)
   end
 
   def new
@@ -41,6 +42,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
 
   end
 

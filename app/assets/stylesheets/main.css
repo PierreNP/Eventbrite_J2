@@ -265,3 +265,23 @@ header{
 .table{
   margin:3rem;
 }
+
+.event-details{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.39);
+  padding: 2rem;
+  border-radius: 0.5rem;
+
+}
+
+.event-details li:not(:last-child){
+  margin-right: 5rem;
+}
+
+.event-show{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
