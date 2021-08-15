@@ -42,7 +42,15 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+
+    # puts "🔥"*40
+    # puts params
+    # puts params.require(:event)
+    # puts params[:event][:event_picture]
+    # puts "🔥"*40
+
     @event.update(post_params)
+    @event.event_pictures.attach(params[:event][:event_picture])
     redirect_to event_path(@event.id)
   end
 
