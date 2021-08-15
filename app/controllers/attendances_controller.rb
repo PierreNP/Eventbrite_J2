@@ -1,5 +1,6 @@
 class AttendancesController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :is_attending?, only: [:new, :create]
 
   # GET /attendances or /attendances.json
