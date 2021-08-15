@@ -20,8 +20,7 @@
             data-locale="auto"></script>
 
     <% else%>
-    <%= link_to "Participer gratuitement",event_attendances_path(@event.id), method: :post %>
-
+      <%= link_to "Participer gratuitement",event_attendances_path(@event.id), method: :post %>
     <% end %>
 
 <% end %>

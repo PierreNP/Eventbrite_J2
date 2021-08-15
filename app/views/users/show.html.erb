@@ -6,20 +6,21 @@
     <%= @user.description%>
 
 <h4>Mes événements en tant qu'organisateur</h4>
-<div class = "event-grid">
-    <% @user_events.each do |event| %>
-    <div class = "event-card">
-      <p><%= event.title%></p>
-      <p><%= event.description%></p>
-      <p><%= event.start_date%></p>
-      <p><%= event.location%></p>
-      <p><%= event.duration%></p>
-      <p><%= event.price%></p>
-      <%if !event.is_validated%>
-        <small>En attente de validation</small>
-      <%end%>
-      </div>
 
-    <% end %>
-</div>
-
+ <div class='event-grid'>
+      <% @user_events.each do |event| %>
+        <div class="card event-card">
+          <img class="card-img-top" src="https://source.unsplash.com/1600x900/?event,concert" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= event.title %></h5>
+            <p class="card-text"><%= event.description %></p>
+            <%= link_to "Details", event_path(event.id), class:'btn btn-primary' %>
+            <%if event.is_validated == nil%>
+             <div> <small>En attente de validation</small></div>
+            <%elsif event.is_validated == false %>
+             <div> <small>Refusé ! </small></div>
+            <%end%>
+          </div>
+        </div>
+      <% end %>
+    </div>

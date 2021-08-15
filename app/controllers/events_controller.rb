@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /events or /events.json
   def index
@@ -14,21 +14,14 @@ class EventsController < ApplicationController
     end
   end
 
-  # GET /events/1 or /events/1.json
   def show
       @event = Event.find(params[:id])
   end
 
-  # GET /events/new
   def new
     @event = Event.new
   end
 
-  # GET /events/1/edit
-  def edit
-  end
-
-  # POST /events or /events.json
   def create
     @event = Event.new(admin_id:current_user.id)
     @event.update(post_params)
@@ -38,27 +31,17 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1 or /events/1.json
 
-  def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: "Event was successfully updated." }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+  def edit
   end
 
-  # DELETE /events/1 or /events/1.json
+
+  def update
+   
+  end
+
   def destroy
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
-      format.json { head :no_content }
-    end
+
   end
 
   private

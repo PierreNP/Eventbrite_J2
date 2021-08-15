@@ -19,7 +19,7 @@
 <%end%>
 
 
-<% if current_user.id == @event.admin_id %>  
+<% if current_user && current_user.id == @event.admin_id %>  
 <%= link_to 'Edit', edit_event_path(@event) %> 
 <%end%>
 

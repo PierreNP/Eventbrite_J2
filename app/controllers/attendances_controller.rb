@@ -20,8 +20,6 @@ class AttendancesController < ApplicationController
 
     if (@amount > 0)
       begin
-        puts 'je rentre dans le IF AMOUNT > 0'
-        puts "😈"*100
       customer = Stripe::Customer.create({
         email: params[:stripeEmail],
         source: params[:stripeToken],
@@ -33,6 +31,7 @@ class AttendancesController < ApplicationController
         description: 'Rails Stripe customer',
         currency: 'eur',
       })
+
       @attendance.update(event_id:@event.id, attendee_id:current_user.id, stripe_customer_id:customer.id)
 
     rescue Stripe::CardError => e
