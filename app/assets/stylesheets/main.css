@@ -256,7 +256,11 @@ header{
 
 .event-card{
   transition: 0.25s all;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  /* display: flex;
+  justify-content: space-between; */
+
+}
 
 .event-card:hover{
   transform: scale(1.01);
@@ -273,7 +277,7 @@ header{
   background-color: rgba(255, 255, 255, 0.39);
   padding: 2rem;
   border-radius: 0.5rem;
-
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
 .event-details li:not(:last-child){

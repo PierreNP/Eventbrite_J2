@@ -8,8 +8,8 @@
       <%= link_to "Participer", new_event_attendance_path(@event.id), class:"btn btn-primary btn-lg"%>
 
 <% else %>
-<p>Impatient de t'y voir, gros !</p>
-      <%= link_to "Ne plus participer", event_attendance_path(@event.id, @attendance.id), method: :delete, class:"btn btn-danger btn-lg" %>
+  <p>Impatient de t'y voir, gros !</p>
+  <%= link_to "Ne plus participer", event_attendance_path(@event.id, @attendance.id), method: :delete, class:"btn btn-danger btn-lg" %>
 
 <%end%>
 </div>
@@ -19,11 +19,14 @@
     <li>Ville : <%= @event.location%></li>
     <li>Prix : <%= @event.price%> €</li>
     <li>Nombre d'inscrits : <%= @event.attendees.count%></li>
+    <li>Organisateur : <%= User.find(@event.admin_id).first_name%> <%= User.find(@event.admin_id).last_name%></li>
+
     <br>
 
     <% if current_user && current_user.id == @event.admin_id %>  
       <%= link_to 'Edit', edit_event_path(@event.id), class:'btn btn-warning' %> 
-      <%= link_to 'Supprimer', edit_event_path(@event.id), class:'btn btn-danger' %> 
+      <%= link_to 'Supprimer', event_path(@event.id),method: :delete, class:'btn btn-danger' %> 
+<%# <span class="badge badge-pill badge-success">Success</span> %>
 
     <%end%>
   </ul>

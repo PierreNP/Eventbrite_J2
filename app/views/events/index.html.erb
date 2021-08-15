@@ -10,14 +10,23 @@
     <p id="notice"><%= notice %></p>
     <h1>Tous les Events</h1>
     <div class='event-grid'>
-      <% @events.each do |event| %>
+      <% @events.sort.each do |event| %>
         <div class="card event-card">
           <img class="card-img-top" src="https://source.unsplash.com/1600x900/?event,concert" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title"><%= event.title %></h5>
             <p class="card-text"><%= event.description %></p>
+              <div>
             <%= link_to "Details", event_path(event.id), class:'btn btn-primary' %>
+            
+              <% if current_user && current_user.id == event.admin_id %>  
+                      <%= link_to 'Edit', edit_event_path(event.id), class:'btn btn-warning' %> 
+                      <%= link_to 'Supprimer', event_path(event.id),method: :delete, class:'btn btn-danger' %>         
+              <%end%>
+            </div>
           </div>
+          
+
         </div>
       <% end %>
     </div>

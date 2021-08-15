@@ -1,6 +1,40 @@
-<h1>Editing Event</h1>
+<h1>New Event</h1>
 
-<%= render 'form', event: @event %>
+<%= form_with model:@event, url: event_path(@event.id), method: :patch, local:true do |f| %>
+ 
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, autofocus: true %>
+  </div>
 
-<%= link_to 'Show', @event %> |
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :duration %>
+    <%= f.text_field :duration %>
+  </div><br />
+
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.datetime_field :start_date %>
+  </div><br />
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div><br />
+
+  <div class="actions">
+    <%= f.submit "Editer l'événement" %>
+  </div><br />
+<% end %>
+
 <%= link_to 'Back', events_path %>
