@@ -32,9 +32,17 @@
     <%= f.text_field :price %>
   </div><br />
 
+  <div class="field">
+    <%= f.label :event_picture %>
+    <%= f.file_field :event_picture %>
+  </div><br />
+
   <div class="actions">
     <%= f.submit "Editer l'événement" %>
   </div><br />
+
 <% end %>
+
+
 
 <%= link_to 'Back', events_path %>
