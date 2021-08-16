@@ -23,6 +23,11 @@ body {
   /* position:relative; */
 }
 
+.event_pictures_box {
+  display: flex;
+  gap: 1rem;
+}
+
 .event_pictures {
   height: 10px;
   width: auto;
@@ -30,6 +35,14 @@ body {
 
 body .cybr-btn + .cybr-btn {
   margin-top: 2rem;
+}
+
+.show_event_pictures {
+  height: 200px;
+}
+
+.show_event_pictures img {
+  height: 100%;
 }
 
 .cybr-btn {
