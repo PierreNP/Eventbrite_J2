@@ -1,47 +1,29 @@
 <h1>New Event</h1>
-
 <%= form_with model:@event, url: events_path, method: :post, local:true do |f| %>
- 
-
   <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, autofocus: true %>
+    <%= f.text_field :title, autofocus: true, placeholder: 'title' %>
   </div>
-
   <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, placeholder: 'description' %>
   </div>
-
   <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, placeholder: 'location' %>
   </div>
-
   <div class="field">
-    <%= f.label :duration %>
-    <%= f.text_field :duration %>
+    <%= f.text_field :duration, placeholder: 'duration' %>
   </div>
-
   <div class="field">
     <%= f.label :start_date %>
-    <%= f.datetime_field :start_date %>
+    <%= f.datetime_field :start_date, value: 'start date' %>
   </div>
-
   <div class="field">
-    <%= f.label :price %>
-    <%= f.text_field :price %>
+    <%= f.text_field :price, placeholder: 'price' %>
   </div>
-
   <%if current_user.is_admin==true%>
     <%= f.hidden_field :is_validated, value:true %>
-<% end %>
-
+  <% end %>
   <div class="actions">
     <%= f.submit "Créer l'événement" %>
   </div>
-
-
 <% end %>
-
 <%= link_to 'Back', events_path %>

@@ -1,0 +1,36 @@
+@import "main.css";
+
+footer{
+  padding: 2rem 0;
+  margin-top: 3rem;
+  background-image:var(--primary-gradient);
+  width:100%;
+}
+
+footer div{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  color: var(--color-grey-1);
+}
+
+footer h4{
+  font-size: 1.2rem;
+}
+
+footer ul{
+  /* border:2px black solid; */
+}
+
+footer li{
+  list-style: none;
+}
+
+footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
