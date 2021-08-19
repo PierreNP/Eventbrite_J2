@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable, :confirmable
 
-  after_create :welcome_send
+  # after_create :welcome_send
 
   has_many :attendances, foreign_key: 'attendee_id'
   has_many :events, through: :attendances
@@ -14,8 +14,8 @@ class User < ApplicationRecord
   
   private
        
-  def welcome_send
-    UserMailer.welcome_email(self).deliver_now
-  end
+  # def welcome_send
+  #   UserMailer.welcome_email(self).deliver_now
+  # end
        
 end
