@@ -1,57 +1,49 @@
 <div class="jumbotron event-show" style='display:flex ; flex-direction: column ; ' >
   <div style='display:flex'>
-  <div>
-    <h1 class="display-4"><%= @event.title%></h1>
-    <p class="lead"><%= @event.description%></p>
-    <% if current_user %>  
-      <% if !@event.attendees.include?(current_user) %>  
-        <%= link_to "Participer", new_event_attendance_path(@event.id), class:"btn btn-primary btn-lg"%>
-      <% else %>
-        <p>Impatient de t'y voir, gros !</p>
-        <%= link_to "Ne plus participer", event_attendance_path(@event.id, @attendance.id), method: :delete, class:"btn btn-danger btn-lg" %>
-      <%end%>
+    <div>
+      <h1 class="display-4"><%= @event.title%></h1>
+      <p class="lead"><%= @event.description%></p>
+      <% if current_user %>
+        <% if !@event.attendees.include?(current_user) %>
+          <%= link_to "Participer", new_event_attendance_path(@event.id), class:"btn btn-primary btn-lg"%>
+        <% else %>
+          <p>Impatient de t'y voir, gros !</p>
+          <%= link_to "Ne plus participer", event_attendance_path(@event.id, @attendance.id), method: :delete, class:"btn btn-danger btn-lg" %>
+        <%end%>
       <% else %>
         <div class="alert alert-warning" role="alert">
           Connectez-vous pour participer à un event !
         </div>
-    <%end%>
+      <%end%>
+    </div>
+    <ul class="event-details">
+      <h3><i class="fas fa-info"></i> Infos</h3>
+      <li>Date : <%= @event.start_date.to_s[0..10]%></li>
+      <li>Durée : <%= @event.duration%> heure</li>
+      <li>Ville : <%= @event.location%></li>
+      <li>Prix : <%= @event.price%> €</li>
+      <li>Nombre d'inscrits : <%= @event.attendees.count%></li>
+      <li>Organisateur : <%= User.find(@event.admin_id).first_name%> <%= User.find(@event.admin_id).last_name%></li>
+      <br>
+      <% if current_user && current_user.id == @event.admin_id %>
+        <div>
+          <%= link_to 'Edit', edit_event_path(@event.id), class:'btn btn-warning' %>
+          <%= link_to 'Supprimer', event_path(@event.id),method: :delete, class:'btn btn-danger' %>
+        </div>
+      <%end%>
+    </ul>
   </div>
-
-  <ul class="event-details">
-    <h3><i class="fas fa-info"></i> Infos</h3>
-    <li>Date : <%= @event.start_date.to_s[0..10]%></li>
-    <li>Durée : <%= @event.duration%> heure</li>
-    <li>Ville : <%= @event.location%></li>
-    <li>Prix : <%= @event.price%> €</li>
-    <li>Nombre d'inscrits : <%= @event.attendees.count%></li>
-    <li>Organisateur : <%= User.find(@event.admin_id).first_name%> <%= User.find(@event.admin_id).last_name%></li>
-    <br>
-    <% if current_user && current_user.id == @event.admin_id %>
-      <div>
-        <%= link_to 'Edit', edit_event_path(@event.id), class:'btn btn-warning' %> 
-        <%= link_to 'Supprimer', event_path(@event.id),method: :delete, class:'btn btn-danger' %> 
-      </div>
-    <%end%>
-  </ul>
-  </div>
-
   <div class='event_pictures_box'>
     <%if @event.event_pictures.attached?%>
-        <% @event.event_pictures.each do |picture|%>
-            <div class='show_event_pictures'>
-              <%= image_tag picture, alt: 'event_picture'%>
-            </div>
-        <%end%>
+      <% @event.event_pictures.each do |picture|%>
+        <div class='show_event_pictures'>
+          <%= image_tag picture, alt: 'event_picture'%>
+        </div>
+      <%end%>
     <%else%>
       <p>=== Il n'y a pas encore d'avatar liée à cet event ?!!? et tu crois qu'il va y avoir foule ? Nan mais Allô quoi ! ===</p>
     <%end%>
   </div>
-  
 </div>
-
-
-
 <p id="notice"><%= notice %></p>
-
-
 <%= link_to 'Back', events_path %>

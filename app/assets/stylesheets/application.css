@@ -12,6 +12,9 @@
  *
 
  *= require main
+ *= require footer
+ *= require navbar
+ *= require form
 
  */
 

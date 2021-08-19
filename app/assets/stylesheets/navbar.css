@@ -1,0 +1,29 @@
+@import "main.css";
+
+.navbar.fixed{
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index: 100;
+}
+
+.navbar a{
+  text-decoration: none;
+}
+
+.navbar a:visited{
+  /* color: inherit; */
+}
+
+.logo{
+  font-size: 1.5rem;
+}
+
+.navbar a:not(.logo):hover{
+    background: transparent;
+    color:#3494e6
+}
+
+.navbar li{
+  margin: 0 1rem;
+}
